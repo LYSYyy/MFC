@@ -1,0 +1,204 @@
+#!/bin/bash
+
+version="1.0"
+
+function menu
+{
+	clear
+	
+	echo "PL"
+	echo -e "\e[39m  __  __   ______    _____ "
+	echo -e " |  \/  | |  ____|  / ____|"
+	echo -e " | \  / | | |__    | |     "
+	echo -e " | |\/| | |  __|   | |     "
+	echo -e " | |  | | | |      | |____ "
+	echo -e " |_|  |_| |_|       \_____|"
+	echo -e "                           "
+	echo -e "              \e[90mby LYSYyy $version\e[0m"
+	echo
+	echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+	echo 
+	echo -e " \e[1m1\e[21m. Dodaj nowe polaczenie"
+	echo -e " \e[1m2\e[21m. Polaczenia"
+	echo -e " \e[1m3\e[21m. Parametry"
+	echo
+	echo -e " \e[1;31m0\e[21;39m. Wyjscie"
+	echo
+	echo -ne "\e[1;31mMFC\e[21;39m:~# "
+	read -e opcja
+
+	if [ $opcja = 1 ]; then
+		function nowe_polaczenie
+		{
+			clear
+			echo "PL"
+			echo -e "\e[39m  __  __   ______    _____ "
+			echo -e " |  \/  | |  ____|  / ____|"
+			echo -e " | \  / | | |__    | |     "
+			echo -e " | |\/| | |  __|   | |     "
+			echo -e " | |  | | | |      | |____ "
+			echo -e " |_|  |_| |_|       \_____|"
+			echo -e "                           "
+			echo -e "              \e[90mby LYSYyy $version\e[0m"
+			echo
+			echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+			echo
+			echo -ne "\e[21;39mProsze podac nazwe polaczenia:\e[1;39m "
+			read -e nazwa
+			echo -ne "\e[21;39mProsze podac PAYLOAD:\e[1;39m "
+			read -e payload
+			echo -ne "\e[21;39mProsze podac LHOST:\e[1;39m "
+			read -e lhost
+			echo -ne "\e[21;39mProsze podac LPORT:\e[1;39m "
+			read -e lport
+			echo
+			echo -e " \e[1;32m[+]\e[1;39m Rozpoczynam tworzenie nowego polaczenia...\e[21;90m"
+			
+			touch ~/.mfconnect/$nazwa.rc
+			echo use exploit/multi/handler > ~/.mfconnect/$nazwa.rc
+			echo set PAYLOAD $payload >> ~/.mfconnect/$nazwa.rc
+			echo set LHOST $lhost >> ~/.mfconnect/$nazwa.rc
+			echo set LPORT $lport >> ~/.mfconnect/$nazwa.rc
+			echo set ExitOnSession false >> ~/.mfconnect/$nazwa.rc
+			echo exploit -j >> ~/.mfconnect/$nazwa.rc
+			
+			if [ -e ~/.mfconnect/$nazwa.rc ]; then
+				echo
+				echo -e "\e[1;32mNowe polaczenie zostalo utworzone!\e[0m"
+				echo
+				read
+				menu
+			
+			else
+				clear
+				echo
+				echo -e "\e[1;31mDoszlo do bledu!\e[0m"
+				echo
+				read
+				menu
+			fi
+		}
+		
+		nowe_polaczenie
+		
+	elif [ $opcja = 2 ]; then
+		
+		function lista
+		{
+			clear
+			echo "PL"
+			echo -e "\e[1m----------------------------\e[1;32m"
+			echo
+			cd ~/.mfconnect
+			find *
+			echo
+			echo -e "\e[1;39m----------------------------\e[0m"
+			echo
+			echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+			echo 
+			echo -e " \e[1m1\e[21m. Polacz"
+			echo -e " \e[1m2\e[21m. Edytuj"
+			echo -e " \e[1m3\e[21m. Zmien nazwe"
+			echo -e " \e[1m4\e[21m. Usun"
+			echo
+			echo -e " \e[1m0\e[21m. Menu"
+			echo
+			echo -ne "\e[1;31mMFC\e[21;39m:~# "
+			read -e opcja
+			
+			if [ $opcja = 1 ]; then
+				echo
+				echo -ne "\e[1;96m[POLACZ]\e[21;39m Prosze podac nazwe polaczenia (\e[31mbez .rc\e[39m):\e[1m "
+				read -e nazwa
+				clear
+				echo
+				echo -e " \e[1;32m[+]\e[1;39m Rozpoczynam polaczenie..."
+				echo
+				msfconsole -q -r ~/.mfconnect/$nazwa.rc
+				lista
+				
+			elif [ $opcja = 2 ]; then
+				echo
+				echo -ne "\e[1;32m[EDYTUJ]\e[21;39m Prosze podac nazwe polaczenia (\e[31mbez .rc\e[39m):\e[1m "
+				read -e nazwa
+				echo
+				nano ~/.mfconnect/$nazwa.rc
+				lista
+				
+			elif [ $opcja = 3 ]; then
+				echo
+				echo -ne "\e[1;33m[ZMIEN NAZWE]\e[21;39m Prosze podac \e[1;39mSTARA\e[21;39m nazwe polaczenia (\e[31mbez .rc\e[39m):\e[1m "
+				read -e nazwa
+				echo -ne "\e[1;33m[ZMIEN NAZWE]\e[21;39m Prosze podac \e[1;39mNOWA\e[21;39m nazwe polaczenia (\e[31mbez .rc\e[39m):\e[1m "
+				read -e newnazwa
+				echo
+				mv ~/.mfconnect/$nazwa.rc ~/.mfconnect/$newnazwa.rc
+				lista
+				
+			elif [ $opcja = 4 ]; then
+				echo
+				echo -ne "\e[1;31m[USUN]\e[21;39m Prosze podac nazwe polaczenia (\e[31mbez .rc\e[39m):\e[1m "
+				read -e nazwa
+				echo
+				rm ~/.mfconnect/$nazwa.rc
+				lista
+				
+			elif [ $opcja = 0 ]; then
+				menu
+				
+			else
+				clear
+				echo
+				echo -e "\e[1;31mWybrano nieprawidlowa opcje!\e[0m"
+				echo
+				read
+				lista
+				
+			fi
+		}
+		
+		lista
+		
+	elif [ $opcja = 3 ]; then
+		clear
+		echo "PL"
+		echo -e "\e[39m  __  __   ______    _____ "
+		echo -e " |  \/  | |  ____|  / ____|"
+		echo -e " | \  / | | |__    | |     "
+		echo -e " | |\/| | |  __|   | |     "
+		echo -e " | |  | | | |      | |____ "
+		echo -e " |_|  |_| |_|       \_____|"
+		echo -e "                           "
+		echo -e "              \e[90mby LYSYyy $version\e[0m"
+		echo
+		echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+		echo
+		echo -e "\e[1;39mMFC umozliwia wykorzystywanie parametrow do wydajniejszego i szybszego zarzadzania polaczeniami:\e[0m"
+		echo
+		echo -e " \e[1;39mmfc -c [NAZWA POLACZENIA]\e[21;37m - Szybkie polaczenie"
+		echo -e " \e[1;39mmfc -rm [NAZWA POLACZENIA]\e[21;37m - Usuwanie wybranego polaczenia"
+		echo -e " \e[1;39mmfc -edit [NAZWA POLACZENIA]\e[21;37m - Szybka modyfikacja wybranego polaczenia"
+		echo -e " \e[1;39mmfc -ls\e[21;37m - Lista polaczen"
+		echo -e " \e[1;39mmfc -uninstall\e[21;37m - Usuwanie MFC"
+		echo
+		read
+		menu
+		
+	elif [ $opcja = 0 ]; then
+		clear
+		echo
+		echo -e "\e[1;33mDo zobaczenia :)\e[0m"
+		echo
+		exit
+		
+	else
+		clear
+		echo
+		echo -e "\e[1;31mWybrano nieprawidlowa opcje!\e[0m"
+		echo
+		read
+		menu
+	fi
+}
+
+menu

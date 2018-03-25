@@ -1,0 +1,98 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+
+	if [ -e ~/.mfconnect ]; then
+	
+		source mfc_run
+		
+	else
+	
+		source mfc_firstrun
+		
+	fi
+		
+else
+
+	if [ -e ~/.mfconnect ]; then
+
+		if [ $1 = "-c" ]; then
+			msfconsole -q -r ~/.mfconnect/$2.rc
+			
+		elif [ $1 = "-rm" ]; then
+			rm ~/.mfconnect/$2.rc
+			
+		elif [ $1 = "-edit" ]; then
+			nano ~/.mfconnect/$2.rc
+			
+		elif [ $1 = "-ls" ]; then
+			echo
+			echo -e "\e[1m---------------\e[1;32m"
+			echo
+			cd ~/.mfconnect
+			find *
+			echo
+			echo -e "\e[1;39m---------------\e[0m"
+			echo
+			exit
+			
+		elif [ $1 = "-uninstall" ]; then
+			echo
+			echo -en "\e[1;31mAre you sure you want to uninstall MFC? [Y / N]:\e[1;39m "
+			read -e odp
+			echo
+			echo -e "\e[1;32m[+]\e[1;39m Starting uninstall...\e[21;90m"
+			echo
+			if [ $odp = "Y" ]; then
+				rm /bin/mfc
+				rm /bin/mfc_firstrun
+				rm /bin/mfc_run
+				rm -r ~/.mfconnect
+			elif [ $odp = "y" ]; then
+				rm /bin/mfc
+				rm /bin/mfc_firstrun
+				rm /bin/mfc_run
+				rm -r ~/.mfconnect
+			else
+				exit
+			fi
+			clear
+			echo
+			echo -e "\e[1;32mMFC has been uninstall!\e[0m"
+			echo
+			exit
+			
+		elif [ $1 = -h ]; then
+		
+			echo
+			echo -e " \e[1;39mmfc -c [CONNECT NAME]\e[21;37m - Fast connection"
+			echo -e " \e[1;39mmfc -rm [CONNECT NAME]\e[21;37m - Delete the selected connection"
+			echo -e " \e[1;39mmfc -edit [CONNECT NAME]\e[21;37m - Fast modification of the selected connection"
+			echo -e " \e[1;39mmfc -ls\e[21;37m - Connect list"
+			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Uninstall MFC"
+			echo
+			
+		elif [ $1 = -help ]; then
+		
+			echo
+			echo -e " \e[1;39mmfc -c [CONNECT NAME]\e[21;37m - Fast connection"
+			echo -e " \e[1;39mmfc -rm [CONNECT NAME]\e[21;37m - Delete the selected connection"
+			echo -e " \e[1;39mmfc -edit [CONNECT NAME]\e[21;37m - Fast modification of the selected connection"
+			echo -e " \e[1;39mmfc -ls\e[21;37m - Connect list"
+			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Uninstall MFC"
+			echo
+			
+		else
+			echo
+			echo -e "\e[1;32mIncorrect parameter!\e[0m"
+			echo
+			exit
+		fi
+		
+	else
+	
+		source mfc_firstrun
+		
+	fi
+
+fi

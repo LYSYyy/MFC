@@ -1,0 +1,98 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+
+	if [ -e ~/.mfconnect ]; then
+	
+		source mfc_run
+		
+	else
+	
+		source mfc_firstrun
+		
+	fi
+		
+else
+
+	if [ -e ~/.mfconnect ]; then
+
+		if [ $1 = "-c" ]; then
+			msfconsole -q -r ~/.mfconnect/$2.rc
+			
+		elif [ $1 = "-rm" ]; then
+			rm ~/.mfconnect/$2.rc
+			
+		elif [ $1 = "-edit" ]; then
+			nano ~/.mfconnect/$2.rc
+			
+		elif [ $1 = "-ls" ]; then
+			echo
+			echo -e "\e[1m---------------\e[1;32m"
+			echo
+			cd ~/.mfconnect
+			find *
+			echo
+			echo -e "\e[1;39m---------------\e[0m"
+			echo
+			exit
+			
+		elif [ $1 = "-uninstall" ]; then
+			echo
+			echo -en "\e[1;31mCzy na pewno chcesz usunac MFC? [T / N]:\e[1;39m "
+			read -e odp
+			echo
+			echo -e "\e[1;32m[+]\e[1;39m Rozpoczynam usuwanie...\e[21;90m"
+			echo
+			if [ $odp = "T" ]; then
+				rm /bin/mfc
+				rm /bin/mfc_firstrun
+				rm /bin/mfc_run
+				rm -r ~/.mfconnect
+			elif [ $odp = "t" ]; then
+				rm /bin/mfc
+				rm /bin/mfc_firstrun
+				rm /bin/mfc_run
+				rm -r ~/.mfconnect
+			else
+				exit
+			fi
+			clear
+			echo
+			echo -e "\e[1;32mMFC zostal usuniety!\e[0m"
+			echo
+			exit
+			
+		elif [ $1 = -h ]; then
+		
+			echo
+			echo -e " \e[1;39mmfc -c [NAZWA POLACZENIA]\e[21;37m - Szybkie polaczenie"
+			echo -e " \e[1;39mmfc -rm [NAZWA POLACZENIA]\e[21;37m - Usuwanie wybranego polaczenia"
+			echo -e " \e[1;39mmfc -edit [NAZWA POLACZENIA]\e[21;37m - Szybka modyfikacja wybranego polaczenia"
+			echo -e " \e[1;39mmfc -ls\e[21;37m - Lista polaczen"
+			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Usuwanie MFC"
+			echo
+			
+		elif [ $1 = -help ]; then
+		
+			echo
+			echo -e " \e[1;39mmfc -c [NAZWA POLACZENIA]\e[21;37m - Szybkie polaczenie"
+			echo -e " \e[1;39mmfc -rm [NAZWA POLACZENIA]\e[21;37m - Usuwanie wybranego polaczenia"
+			echo -e " \e[1;39mmfc -edit [NAZWA POLACZENIA]\e[21;37m - Szybka modyfikacja wybranego polaczenia"
+			echo -e " \e[1;39mmfc -ls\e[21;37m - Lista polaczen"
+			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Usuwanie MFC"
+			echo
+			
+		else
+			echo
+			echo -e "\e[1;32mWprowadzono nieprawidlowy parametr!\e[0m"
+			echo
+			exit
+		fi
+		
+	else
+	
+		source mfc_firstrun
+		
+	fi
+
+fi
