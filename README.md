@@ -12,6 +12,13 @@ Metasploit fast Connect (MFC) is a script that allows you to create quick Metasp
 
 - Two languages available: PL / EN
 
+
+## HOW TO INSTALL?
+
+1. ```git clone https://github.com/LYSYyy/MFC.git```
+2. ```cd MFC```
+3. ```chmod +x setup.sh && ./setup.sh```
+
 ---------------------------------------------------------------
 
 Please report all errors and possible suggestions!
