@@ -12,5 +12,7 @@ MFC (Metasploit fast Connect) is a script that allows you to create quick Metasp
 
 - Two languages available: PL / EN
 
+---------------------------------------------------------------
+
 Please report all errors and possible suggestions!
 Thank you :)
