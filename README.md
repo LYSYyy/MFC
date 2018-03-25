@@ -1,6 +1,6 @@
 # MFC
 
-Metasploit fast Connect (MFC) is a script that allows you to create quick Metasploit Payload sessions and connect with them at any time. The task of MFC is to facilitate connecting to selected running exploits!
+Metasploit Fast Connect (MFC) is a script that allows you to create quick Metasploit Payload sessions and connect with them at any time. The task of MFC is to facilitate connecting to selected running exploits!
 
 ## MFC FUNCTION:
 
