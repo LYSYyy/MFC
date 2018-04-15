@@ -31,6 +31,7 @@ function main
 		source mfc
 		
 	else
+		clear
 		main
 	fi
 }
