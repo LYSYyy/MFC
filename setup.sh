@@ -15,7 +15,7 @@ function main
 		cp ./mfc/PL/* /bin
 		source mfc
 		
-	if [ $lang = "pl" ]; then
+	elif [ $lang = "pl" ]; then
 		chmod +x ./mfc/PL/*
 		cp ./mfc/PL/* /bin
 		source mfc
