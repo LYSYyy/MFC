@@ -1,5 +1,5 @@
 #!/bin/bash
-# MFC v1.1 by LYSYyy
+# MFC v1.2 by LYSYyy
 
 if [ -z "$1" ]; then
 
@@ -19,7 +19,7 @@ else
 
 		if [ $1 = "-c" ]; then
 			echo
-			echo -e " \e[1;32m[+]\e[1;39m Rozpoczynam polaczenie..."
+			echo -e " \e[1;32;24m[+]\e[1;39m Rozpoczynam polaczenie..."
 			echo
 			msfconsole -q -r ~/.mfconnect/$2.rc
 			
@@ -31,21 +31,21 @@ else
 			
 		elif [ $1 = "-ls" ]; then
 			echo
-			echo -e "\e[1m---------------\e[1;32m"
+			echo -e "\e[1;24m---------------\e[1;32;24m"
 			echo
 			cd ~/.mfconnect
 			find *
 			echo
-			echo -e "\e[1;39m---------------\e[0m"
+			echo -e "\e[1;39;24m---------------\e[0m"
 			echo
 			exit
 			
 		elif [ $1 = "-uninstall" ]; then
 			echo
-			echo -en "\e[1;31mCzy na pewno chcesz usunac MFC? [T / N]:\e[1;39m "
+			echo -en "\e[1;31;24mCzy na pewno chcesz usunac MFC? [T / N]:\e[1;39;24m "
 			read -e odp
 			echo
-			echo -e "\e[1;32m[+]\e[1;39m Rozpoczynam usuwanie...\e[21;90m"
+			echo -e "\e[1;32;24m[+]\e[1;39;24m Rozpoczynam usuwanie...\e[21;90;24m"
 			echo
 			if [ $odp = "T" ]; then
 				rm /bin/mfc
@@ -62,33 +62,33 @@ else
 			fi
 			clear
 			echo
-			echo -e "\e[1;32mMFC zostal usuniety!\e[0m"
+			echo -e "\e[1;32;24mMFC zostal usuniety!\e[0m"
 			echo
 			exit
 			
 		elif [ $1 = -h ]; then
 		
 			echo
-			echo -e " \e[1;39mmfc -c [NAZWA POLACZENIA]\e[21;37m - Szybkie polaczenie"
-			echo -e " \e[1;39mmfc -rm [NAZWA POLACZENIA]\e[21;37m - Usuwanie wybranego polaczenia"
-			echo -e " \e[1;39mmfc -edit [NAZWA POLACZENIA]\e[21;37m - Szybka modyfikacja wybranego polaczenia"
-			echo -e " \e[1;39mmfc -ls\e[21;37m - Lista polaczen"
-			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Usuwanie MFC"
+			echo -e " \e[1;39;24mmfc -c [NAZWA POLACZENIA]\e[21;37;24m - Szybkie polaczenie"
+			echo -e " \e[1;39;24mmfc -rm [NAZWA POLACZENIA]\e[21;37;24m - Usuwanie wybranego polaczenia"
+			echo -e " \e[1;39;24mmfc -edit [NAZWA POLACZENIA]\e[21;37;24m - Szybka modyfikacja wybranego polaczenia"
+			echo -e " \e[1;39;24mmfc -ls\e[21;37;24m - Lista polaczen"
+			echo -e " \e[1;39;24mmfc -uninstall\e[21;37;24m - Usuwanie MFC"
 			echo
 			
 		elif [ $1 = -help ]; then
 		
 			echo
-			echo -e " \e[1;39mmfc -c [NAZWA POLACZENIA]\e[21;37m - Szybkie polaczenie"
-			echo -e " \e[1;39mmfc -rm [NAZWA POLACZENIA]\e[21;37m - Usuwanie wybranego polaczenia"
-			echo -e " \e[1;39mmfc -edit [NAZWA POLACZENIA]\e[21;37m - Szybka modyfikacja wybranego polaczenia"
-			echo -e " \e[1;39mmfc -ls\e[21;37m - Lista polaczen"
-			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Usuwanie MFC"
+			echo -e " \e[1;39;24mmfc -c [NAZWA POLACZENIA]\e[21;37;24m - Szybkie polaczenie"
+			echo -e " \e[1;39;24mmfc -rm [NAZWA POLACZENIA]\e[21;37;24m - Usuwanie wybranego polaczenia"
+			echo -e " \e[1;39;24mmfc -edit [NAZWA POLACZENIA]\e[21;37;24m - Szybka modyfikacja wybranego polaczenia"
+			echo -e " \e[1;39;24mmfc -ls\e[21;37;24m - Lista polaczen"
+			echo -e " \e[1;39;24mmfc -uninstall\e[21;37;24m - Usuwanie MFC"
 			echo
 			
 		else
 			echo
-			echo -e "\e[1;32mWprowadzono nieprawidlowy parametr!\e[0m"
+			echo -e "\e[1;32;24mWprowadzono nieprawidlowy parametr!\e[0m"
 			echo
 			exit
 		fi
