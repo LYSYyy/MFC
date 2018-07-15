@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.0"
+version="1.1"
 
 	clear
 	
@@ -12,12 +12,12 @@ version="1.0"
 	echo -e " | |  | | | |      | |____ "
 	echo -e " |_|  |_| |_|       \_____|"
 	echo -e "                           "
-	echo -e "              \e[90mby LYSYyy $version\e[0m"
+	echo -e "              \e[90;24mby LYSYyy $version\e[0m"
 	echo
-	echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+	echo -e " \e[1;33;24m+Metasploit Fast Connect+\e[0m"
 	
 		echo
-		echo -e " \e[1;32m[+]\e[1;39m Rozpoczynam instalacje...\e[21;90m"
+		echo -e " \e[1;32;24m[+]\e[1;39;24m Rozpoczynam instalacje...\e[21;90;24m"
 		echo
 		
 		apt-get update
@@ -26,7 +26,7 @@ version="1.0"
 		clear
 		
 		echo
-		echo -e "\e[1;32mInstalacja zakonczona!\e[0m"
+		echo -e "\e[1;32;24mInstalacja zakonczona!\e[0m"
 		echo
 		
 		sleep 1
