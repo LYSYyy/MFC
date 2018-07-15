@@ -1,5 +1,5 @@
 #!/bin/bash
-# MFC v1.1 by LYSYyy
+# MFC v1.2 by LYSYyy
 
 if [ -z "$1" ]; then
 
@@ -19,7 +19,7 @@ else
 
 		if [ $1 = "-c" ]; then
 			echo
-			echo -e " \e[1;32m[+]\e[1;39m Starting connection..."
+			echo -e " \e[1;32;24m[+]\e[1;39;24m Starting connection..."
 			echo
 			msfconsole -q -r ~/.mfconnect/$2.rc
 			
@@ -31,21 +31,21 @@ else
 			
 		elif [ $1 = "-ls" ]; then
 			echo
-			echo -e "\e[1m---------------\e[1;32m"
+			echo -e "\e[1;24m---------------\e[1;32;24m"
 			echo
 			cd ~/.mfconnect
 			find *
 			echo
-			echo -e "\e[1;39m---------------\e[0m"
+			echo -e "\e[1;39;24m---------------\e[0m"
 			echo
 			exit
 			
 		elif [ $1 = "-uninstall" ]; then
 			echo
-			echo -en "\e[1;31mAre you sure you want to uninstall MFC? [Y / N]:\e[1;39m "
+			echo -en "\e[1;31;24mAre you sure you want to uninstall MFC? [Y / N]:\e[1;39;24m "
 			read -e odp
 			echo
-			echo -e "\e[1;32m[+]\e[1;39m Starting uninstall...\e[21;90m"
+			echo -e "\e[1;32;24m[+]\e[1;39;24m Starting uninstall...\e[21;90;24m"
 			echo
 			if [ $odp = "Y" ]; then
 				rm /bin/mfc
@@ -62,33 +62,33 @@ else
 			fi
 			clear
 			echo
-			echo -e "\e[1;32mMFC has been uninstall!\e[0m"
+			echo -e "\e[1;32;24mMFC has been uninstall!\e[0m"
 			echo
 			exit
 			
 		elif [ $1 = -h ]; then
 		
 			echo
-			echo -e " \e[1;39mmfc -c [CONNECT NAME]\e[21;37m - Fast connection"
-			echo -e " \e[1;39mmfc -rm [CONNECT NAME]\e[21;37m - Delete the selected connection"
-			echo -e " \e[1;39mmfc -edit [CONNECT NAME]\e[21;37m - Fast modification of the selected connection"
-			echo -e " \e[1;39mmfc -ls\e[21;37m - Connect list"
-			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Uninstall MFC"
+			echo -e " \e[1;39;24mmfc -c [CONNECT NAME]\e[21;37;24m - Fast connection"
+			echo -e " \e[1;39;24mmfc -rm [CONNECT NAME]\e[21;37;24m - Delete the selected connection"
+			echo -e " \e[1;39;24mmfc -edit [CONNECT NAME]\e[21;37'24m - Fast modification of the selected connection"
+			echo -e " \e[1;39;24mmfc -ls\e[21;37;24m - Connect list"
+			echo -e " \e[1;39;24mmfc -uninstall\e[21;37;24m - Uninstall MFC"
 			echo
 			
 		elif [ $1 = -help ]; then
 		
 			echo
-			echo -e " \e[1;39mmfc -c [CONNECT NAME]\e[21;37m - Fast connection"
-			echo -e " \e[1;39mmfc -rm [CONNECT NAME]\e[21;37m - Delete the selected connection"
-			echo -e " \e[1;39mmfc -edit [CONNECT NAME]\e[21;37m - Fast modification of the selected connection"
-			echo -e " \e[1;39mmfc -ls\e[21;37m - Connect list"
-			echo -e " \e[1;39mmfc -uninstall\e[21;37m - Uninstall MFC"
+			echo -e " \e[1;39;24mmfc -c [CONNECT NAME]\e[21;37;24m - Fast connection"
+			echo -e " \e[1;39;24mmfc -rm [CONNECT NAME]\e[21;37;24m - Delete the selected connection"
+			echo -e " \e[1;39;24mmfc -edit [CONNECT NAME]\e[21;37;24m - Fast modification of the selected connection"
+			echo -e " \e[1;39;24mmfc -ls\e[21;37;24m - Connect list"
+			echo -e " \e[1;39;24mmfc -uninstall\e[21;37;24m - Uninstall MFC"
 			echo
 			
 		else
 			echo
-			echo -e "\e[1;32mIncorrect parameter!\e[0m"
+			echo -e "\e[1;32;24mIncorrect parameter!\e[0m"
 			echo
 			exit
 		fi
