@@ -7,24 +7,24 @@ function menu
 	clear
 	
 	echo
-	echo -e "\e[39m  __  __   ______    _____ "
+	echo -e "\e[39;24m  __  __   ______    _____ "
 	echo -e " |  \/  | |  ____|  / ____|"
 	echo -e " | \  / | | |__    | |     "
 	echo -e " | |\/| | |  __|   | |     "
 	echo -e " | |  | | | |      | |____ "
 	echo -e " |_|  |_| |_|       \_____|"
 	echo -e "                           "
-	echo -e "              \e[90mby LYSYyy $version\e[0m"
+	echo -e "              \e[90;24mby LYSYyy $version\e[0m"
 	echo
-	echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+	echo -e " \e[1;33;24m+Metasploit Fast Connect+\e[0m"
 	echo 
-	echo -e " \e[1m1\e[21m. Add a new connection"
-	echo -e " \e[1m2\e[21m. Connections"
-	echo -e " \e[1m3\e[21m. Parameters"
+	echo -e " \e[1;24m1\e[21;24m. Add a new connection"
+	echo -e " \e[1;24m2\e[21;24m. Connections"
+	echo -e " \e[1;24m3\e[21;24m. Parameters"
 	echo
-	echo -e " \e[1;31m0\e[21;39m. Exit"
+	echo -e " \e[1;31;24m0\e[21;39;24m. Exit"
 	echo
-	echo -ne "\e[1;31mMFC\e[21;39m:~# "
+	echo -ne "\e[1;31;24mMFC\e[21;39;24m:~# "
 	read -e option
 
 	if [ $option = 1 ]; then
@@ -32,27 +32,27 @@ function menu
 		{
 			clear
 			echo
-			echo -e "\e[39m  __  __   ______    _____ "
+			echo -e "\e[39;24m  __  __   ______    _____ "
 			echo -e " |  \/  | |  ____|  / ____|"
 			echo -e " | \  / | | |__    | |     "
 			echo -e " | |\/| | |  __|   | |     "
 			echo -e " | |  | | | |      | |____ "
 			echo -e " |_|  |_| |_|       \_____|"
 			echo -e "                           "
-			echo -e "              \e[90mby LYSYyy $version\e[0m"
+			echo -e "              \e[90;24mby LYSYyy $version\e[0m"
 			echo
-			echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+			echo -e " \e[1;33;24m+Metasploit Fast Connect+\e[0m"
 			echo
-			echo -ne "\e[21;39mPlease enter name of the connection:\e[1;39m "
+			echo -ne "\e[21;39;24mPlease enter name of the connection:\e[1;39;24m "
 			read -e name
-			echo -ne "\e[21;39mPlease enter PAYLOAD:\e[1;39m "
+			echo -ne "\e[21;39;24mPlease enter PAYLOAD:\e[1;39;24m "
 			read -e payload
-			echo -ne "\e[21;39mPlease enter LHOST:\e[1;39m "
+			echo -ne "\e[21;39;24mPlease enter LHOST:\e[1;39;24m "
 			read -e lhost
-			echo -ne "\e[21;39mPlease enter LPORT:\e[1;39m "
+			echo -ne "\e[21;39;24mPlease enter LPORT:\e[1;39;24m "
 			read -e lport
 			echo
-			echo -e " \e[1;32m[+]\e[1;39m Starting creating a new connection...\e[21;90m"
+			echo -e " \e[1;32;24m[+]\e[1;39m Starting creating a new connection...\e[21;90;24m"
 			
 			touch ~/.mfconnect/$name.rc
 			echo use exploit/multi/handler > ~/.mfconnect/$name.rc
@@ -64,7 +64,7 @@ function menu
 			
 			if [ -e ~/.mfconnect/$name.rc ]; then
 				echo
-				echo -e "\e[1;32mNew connection has been create!\e[0m"
+				echo -e "\e[1;32;24mNew connection has been create!\e[0m"
 				echo
 				read
 				menu
@@ -72,7 +72,7 @@ function menu
 			else
 				clear
 				echo
-				echo -e "\e[1;31mError!\e[0m"
+				echo -e "\e[1;31;24mError!\e[0m"
 				echo
 				read
 				menu
@@ -87,39 +87,39 @@ function menu
 		{
 			clear
 			echo
-			echo -e "\e[1m----------------------------\e[1;32m"
+			echo -e "\e[1;24m----------------------------\e[1;32;24m"
 			echo
 			cd ~/.mfconnect
 			find *
 			echo
-			echo -e "\e[1;39m----------------------------\e[0m"
+			echo -e "\e[1;39;24m----------------------------\e[0;24m"
 			echo
-			echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+			echo -e " \e[1;33;24m+Metasploit Fast Connect+\e[0m"
 			echo 
-			echo -e " \e[1m1\e[21m. Connect"
-			echo -e " \e[1m2\e[21m. Edit"
-			echo -e " \e[1m3\e[21m. Rename"
-			echo -e " \e[1m4\e[21m. Delete"
+			echo -e " \e[1;24m1\e[21;42m. Connect"
+			echo -e " \e[1;24m2\e[21;24m. Edit"
+			echo -e " \e[1;24m3\e[21;24m. Rename"
+			echo -e " \e[1;24m4\e[21;24m. Delete"
 			echo
-			echo -e " \e[1m0\e[21m. Back"
+			echo -e " \e[1;24m0\e[21;24m. Back"
 			echo
-			echo -ne "\e[1;31mMFC\e[21;39m:~# "
+			echo -ne "\e[1;31;24mMFC\e[21;39;24m:~# "
 			read -e option
 			
 			if [ $option = 1 ]; then
 				echo
-				echo -ne "\e[1;96m[CONNECT]\e[21;39m Please enter name of the connection (\e[31mless .rc\e[39m):\e[1m "
+				echo -ne "\e[1;96;24m[CONNECT]\e[21;39;24m Please enter name of the connection (\e[31;24mless .rc\e[39;24m):\e[1;24m "
 				read -e name
 				clear
 				echo
-				echo -e " \e[1;32m[+]\e[1;39m Starting connection..."
+				echo -e " \e[1;32;24m[+]\e[1;39;24m Starting connection..."
 				echo
 				msfconsole -q -r ~/.mfconnect/$name.rc
 				list
 				
 			elif [ $option = 2 ]; then
 				echo
-				echo -ne "\e[1;32m[EDIT]\e[21;39m Please enter name of the connection (\e[31mless .rc\e[39m):\e[1m "
+				echo -ne "\e[1;32;24m[EDIT]\e[21;39;24m Please enter name of the connection (\e[31mless .rc\e[39;24m):\e[1;24m "
 				read -e name
 				echo
 				nano ~/.mfconnect/$name.rc
@@ -127,9 +127,9 @@ function menu
 				
 			elif [ $option = 3 ]; then
 				echo
-				echo -ne "\e[1;33m[RENAME]\e[21;39m Please enter \e[1;39mOLD\e[21;39m connect name (\e[31mless .rc\e[39m):\e[1m "
+				echo -ne "\e[1;33;24m[RENAME]\e[21;39;24m Please enter \e[1;39;24mOLD\e[21;39;24m connect name (\e[31;24mless .rc\e[39;24m):\e[1;24m "
 				read -e name
-				echo -ne "\e[1;33m[RENAME]\e[21;39m Please enter \e[1;39mNEW\e[21;39m connect name (\e[31mless .rc\e[39m):\e[1m "
+				echo -ne "\e[1;33;24m[RENAME]\e[21;39;24m Please enter \e[1;39;24mNEW\e[21;39;24m connect name (\e[31;24mless .rc\e[39;24):\e[1;24m "
 				read -e newname
 				echo
 				mv ~/.mfconnect/$name.rc ~/.mfconnect/$newname.rc
@@ -137,7 +137,7 @@ function menu
 				
 			elif [ $option = 4 ]; then
 				echo
-				echo -ne "\e[1;31m[DELETE]\e[21;39m Please enter name of the connection (\e[31mless .rc\e[39m):\e[1m "
+				echo -ne "\e[1;31;24m[DELETE]\e[21;39;24m Please enter name of the connection (\e[31;24mless .rc\e[39m;24):\e[1m "
 				read -e name
 				echo
 				rm ~/.mfconnect/$name.rc
@@ -149,7 +149,7 @@ function menu
 			else
 				clear
 				echo
-				echo -e "\e[1;31mSelected wrong options!\e[0m"
+				echo -e "\e[1;31;24mSelected wrong options!\e[0m"
 				echo
 				read
 				list
@@ -162,24 +162,24 @@ function menu
 	elif [ $option = 3 ]; then
 		clear
 		echo
-		echo -e "\e[39m  __  __   ______    _____ "
+		echo -e "\e[39;24m  __  __   ______    _____ "
 		echo -e " |  \/  | |  ____|  / ____|"
 		echo -e " | \  / | | |__    | |     "
 		echo -e " | |\/| | |  __|   | |     "
 		echo -e " | |  | | | |      | |____ "
 		echo -e " |_|  |_| |_|       \_____|"
 		echo -e "                           "
-		echo -e "              \e[90mby LYSYyy $version\e[0m"
+		echo -e "              \e[90;24mby LYSYyy $version\e[0m"
 		echo
-		echo -e " \e[1;33m+Metasploit Fast Connect+\e[0m"
+		echo -e " \e[1;33;24m+Metasploit Fast Connect+\e[0m"
 		echo
-		echo -e "\e[1;39mMFC allows you to use parameters for more efficient and faster connection management:\e[0m"
+		echo -e "\e[1;39;24mMFC allows you to use parameters for more efficient and faster connection management:\e[0m"
 		echo
-		echo -e " \e[1;39mmfc -c [CONNECT NAME]\e[21;37m - Fast connection"
-		echo -e " \e[1;39mmfc -rm [CONNECT NAME]\e[21;37m - Delete the selected connection"
-		echo -e " \e[1;39mmfc -edit [CONNECT NAME]\e[21;37m - Fast modification of the selected connection"
-		echo -e " \e[1;39mmfc -ls\e[21;37m - Connect list"
-		echo -e " \e[1;39mmfc -uninstall\e[21;37m - Uninstall MFC"
+		echo -e " \e[1;39;24mmfc -c [CONNECT NAME]\e[21;37;24m - Fast connection"
+		echo -e " \e[1;39;24mmfc -rm [CONNECT NAME]\e[21;37;24m - Delete the selected connection"
+		echo -e " \e[1;39;24mmfc -edit [CONNECT NAME]\e[21;37;24m - Fast modification of the selected connection"
+		echo -e " \e[1;39;24mmfc -ls\e[21;37;24m - Connect list"
+		echo -e " \e[1;39;24mmfc -uninstall\e[21;37;24m - Uninstall MFC"
 		echo
 		read
 		menu
@@ -187,14 +187,14 @@ function menu
 	elif [ $option = 0 ]; then
 		clear
 		echo
-		echo -e "\e[1;33mGood Bye :)\e[0m"
+		echo -e "\e[1;33;24mGood Bye :)\e[0m"
 		echo
 		exit
 		
 	else
 		clear
 		echo
-		echo -e "\e[1;31mSelected wrong options!\e[0m"
+		echo -e "\e[1;31;24mSelected wrong options!\e[0m"
 		echo
 		read
 		menu
